@@ -8,7 +8,7 @@ const todo = document.getElementById("todoContainer");
 const listText = document.getElementById('todoText');
 document.addEventListener('DOMContentLoaded', () => {
     const pages = loadPages();
-
+    console.log("@#!@#@!#!")
     pages.map((page)=>{
         const pageEl = createElement(page);
         todo.appendChild(pageEl);
