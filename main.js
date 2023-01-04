@@ -27,7 +27,6 @@ document.querySelector('#clearBtn').addEventListener('click', ()=>{
 document.querySelector('#submitTodo').addEventListener("click", ()=>{
     const getTodoItemElement = todoItemElement();
     const getTodoItem = createTodoItem(ele);
-
     todo.appendChild(getTodoItem);
     savePage();   
     inputText.value=' ';
