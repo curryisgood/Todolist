@@ -26,7 +26,7 @@ document.querySelector('#clearBtn').addEventListener('click', ()=>{
 
 document.querySelector('#submitTodo').addEventListener("click", ()=>{
     const getTodoItemElement = todoItemElement();
-    const getTodoItem = createTodoItem(ele);
+    const getTodoItem = createTodoItem(getTodoItemElement);
     todo.appendChild(getTodoItem);
     savePage();   
     inputText.value=' ';
@@ -41,15 +41,15 @@ function createTodoItem(todoItemData){
         inputText.value='Text'
     }
     // input 
-    const input = createInputEle(item);
-    input.value = inputText.value||todoItemData.page;
+    const todoIteminput = createInputEle(item);
+    todoIteminput.value = inputText.value||todoItemData.page;
     if(inputText.value){
-        todoItemData.page = input.value;
+        todoItemData.page = todoIteminput.value;
     }
 
     // 투두리스트 내용
-    const span = createSpanEle(item);
-    span.textContent = todoItemData.page;
+    const todoItemText = createSpanEle(item);
+    todoItemText.textContent = todoItemData.page;
 
 
     // 삭제 버튼
@@ -66,23 +66,23 @@ function createTodoItem(todoItemData){
     })
 
     // 수정 이벤트
-    span.addEventListener('dblclick',()=>{
-        FilpHiddenState(input, span, delBtn, editBtn);
+    todoItemText.addEventListener('dblclick',()=>{
+        FilpHiddenState(todoIteminput, todoItemText, delBtn, editBtn);
     })
     
     editBtn.addEventListener('click',()=>{
-        FilpHiddenState(input, span, delBtn, editBtn);
-        todoItemData.page = input.value;
-        span.textContent=todoItemData.page;
+        FilpHiddenState(todoIteminput, todoItemText, delBtn, editBtn);
+        todoItemData.page = todoIteminput.value;
+        todoItemText.textContent=todoItemData.page;
         savePage();
     });
     
     return item;
 }
 
-const FilpHiddenState=(input, span, delbtn, editbtn)=>{
-    input.hidden=!(input.hidden);
-    span.hidden=!(span.hidden);
+const FilpHiddenState=(todoIteminput, todoItemText, delbtn, editbtn)=>{
+    todoIteminput.hidden=!(todoIteminput.hidden);
+    todoItemText.hidden=!(todoItemText.hidden);
 
     delbtn.hidden=!(delbtn.hidden);
     editbtn.hidden=!(editbtn.hidden);
@@ -90,7 +90,6 @@ const FilpHiddenState=(input, span, delbtn, editbtn)=>{
 
 function todoItemElement(){
     const createTodoItemElement ={
-        id : id++,
         page : 'Text'
     };
     addPages(createTodoItemElement);
