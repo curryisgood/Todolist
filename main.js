@@ -1,7 +1,8 @@
 import {loadPages, addPages, deletePages, savePage} from './store.js'
 import {createLiEle, createInputEle,createSpanEle,createDelBtn,createEditBtn } from './craeteDom/createElement.js'
 
-let id = 0;
+
+
 const todo = document.getElementById("todoContainer");
 const inputText = document.getElementById('todoText');
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,7 +65,7 @@ function createTodoItem(todoItemData){
     
     // 삭제 이벤트 
     delBtn.addEventListener('click',()=>{
-        deletePages(todoItemData.page);
+        deletePages(todoItemData.id);
         item.remove();
     })
 
@@ -93,6 +94,7 @@ const FilpHiddenState=(todoIteminput, todoItemText, delbtn, editbtn)=>{
 
 function todoItemElement(){
     const createTodoItemElement ={
+        id : self.crypto.randomUUID(),
         page : 'Text'
     };
     addPages(createTodoItemElement);

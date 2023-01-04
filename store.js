@@ -19,7 +19,7 @@ export const addPages=(page)=>{
 }
 
 export const deletePages=(target)=>{
-    const index = pages.findIndex(function(data){return data.page==target})
+    const index = pages.findIndex(function(data){return data.id==target})
     pages.splice(index,1);
     savePage();
 
