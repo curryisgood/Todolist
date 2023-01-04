@@ -25,13 +25,16 @@ document.querySelector('#clearBtn').addEventListener('click', ()=>{
 
 
 document.querySelector('#submitTodo').addEventListener("click", ()=>{
+    createTodo();
+});
+
+function createTodo(){
     const getTodoItemElement = todoItemElement();
     const getTodoItem = createTodoItem(getTodoItemElement);
     todo.appendChild(getTodoItem);
     savePage();   
     inputText.value=' ';
-    
-});
+}
 
 
 function createTodoItem(todoItemData){
